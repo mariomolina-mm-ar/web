@@ -1,528 +1,314 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mario Molina - Diseñador AEC & Constructor Civil</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: #2c3e50;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 50px 30px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        header .profesion {
-            font-size: 1.5rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 500;
-        }
-        
-        /* Banner de marcas con dos líneas: una fija y una animada con vaivén */
-        .marcas-banner {
-            background: white;
-            padding: 12px 0;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        /* Línea fija centrada */
-        .linea-fija {
-            text-align: center;
-            font-family: 'Roboto Condensed', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #1e3c72;
-            padding-bottom: 2px;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Contenedor para la línea animada */
-        .linea-animada-container {
-            overflow: hidden;
-            position: relative;
-            height: 30px; /* Altura fija para el contenedor */
-        }
-        
-        .linea-animada-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 80px;
-            height: 100%;
-            background: linear-gradient(to right, white, transparent);
-            z-index: 1;
-        }
-        
-        .linea-animada-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 80px;
-            height: 100%;
-            background: linear-gradient(to left, white, transparent);
-            z-index: 1;
-        }
-        
-        .marcas-scroll-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            animation: vaivén 40s ease-in-out infinite; /* Aumentado a 40s para mayor lentitud */
-            will-change: transform;
-        }
-        
-        .marcas-scroll {
-            display: flex;
-            white-space: nowrap;
-            gap: 40px; /* Espacio uniforme entre elementos usando gap */
-        }
-        
-        .marcas-scroll span {
-            font-family: 'Roboto Condensed', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #1e3c72;
-            padding: 0 10px;
-            display: inline-block;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Animación de vaivén - rebote dentro de los límites visibles */
-        @keyframes vaivén {
-            0% {
-                transform: translateX(-40%); /* Comienza visible en el lado izquierdo */
-            }
-            50% {
-                transform: translateX(40%); /* Se mueve al lado derecho, manteniéndose visible */
-            }
-            100% {
-                transform: translateX(-40%); /* Vuelve a la posición inicial */
-            }
-        }
-        
-        /* Secciones */
-        .section {
-            background: white;
-            padding: 35px;
-            margin-bottom: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .section:hover {
-            transform: translateY(-5px);
-        }
-        
-        .section h2 {
-            color: #1e3c72;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #3498db;
-            display: inline-block;
-        }
-        
-        /* Servicios */
-        .servicios {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 25px;
-        }
-        
-        .servicio-item {
-            display: flex;
-            align-items: flex-start;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #3498db;
-        }
-        
-        .servicio-item .icono {
-            font-size: 1.8rem;
-            margin-right: 15px;
-            color: #3498db;
-        }
-        
-        .servicio-item h3 {
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-        
-        /* Llamada a la acción */
-        .cta-section {
-            background: linear-gradient(135deg, #1e3c72, #2a5298 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        .cta-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-        
-        .whatsapp-btn {
-            background: #25d366;
-            color: white;
-            border: none;
-            padding: 18px 40px;
-            font-size: 1.3rem;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .whatsapp-btn:hover {
-            background: #128c7e;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
-        }
-        
-        .whatsapp-btn .icono {
-            margin-right: 10px;
-            font-size: 1.4rem;
-        }
-        
-        /* Contacto */
-        .contacto-info {
-            font-size: 1.1rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .contacto-item {
-            display: flex;
-            align-items: center;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid #3498db;
-            transition: all 0.3s ease;
-        }
-        
-        .contacto-item:hover {
-            transform: translateY(-5px);
-            background: #e3f2fd;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        
-        .contacto-item .icono {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            color: #3498db;
-            width: 30px;
-            text-align: center;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #7f8c8d;
-            font-size: 0.95rem;
-            margin-top: 40px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-        
-        .redes-sociales {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background: #f0f8ff;
-            transform: translateY(-3px);
-        }
-        
-        .social-link i {
-            font-size: 1.2rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.2rem;
-            }
-            
-            header .profesion {
-                font-size: 1.2rem;
-            }
-            
-            .whatsapp-btn {
-                width: 100%;
-                padding: 15px 20px;
-            }
-            
-            /* Ajuste para las líneas en móviles */
-            .linea-fija {
-                font-size: 1rem;
-            }
-            
-            .marcas-scroll {
-                gap: 25px; /* Espacio reducido para móviles */
-            }
-            
-            .marcas-scroll span {
-                font-size: 1rem;
-                padding: 0 8px; /* Padding reducido para móviles */
-            }
-            
-            /* Ajuste de velocidad para móviles */
-            .marcas-scroll-container {
-                animation-duration: 30s; /* Más lento en móviles para mejor experiencia */
-            }
-            
-            /* Ajuste de la animación para móviles */
-            @keyframes vaivén {
-                0% {
-                    transform: translateX(-30%); /* Ajustado para pantallas más pequeñas */
-                }
-                50% {
-                    transform: translateX(30%); /* Ajustado para pantallas más pequeñas */
-                }
-                100% {
-                    transform: translateX(-30%); /* Ajustado para pantallas más pequeñas */
-                }
-            }
-            
-            .cta-section h2 {
-                font-size: 1.8rem;
-            }
-            
-            /* Ajuste para títulos h2 en móviles */
-            .section h2 {
-                font-size: 1.5rem;
-                padding-bottom: 8px;
-                margin-bottom: 15px;
-                word-break: break-word;
-                overflow-wrap: break-word;
-                max-width: 100%;
-            }
-            
-            /* Ajuste para redes sociales en footer - móvil */
-            .redes-sociales {
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
-            }
-            
-            .social-link {
-                width: 80%;
-                max-width: 280px;
-                justify-content: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mario Molina - Diseñador AEC & Constructor Civil</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      padding: 50px 30px;
+      border-radius: 15px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    header .profesion {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+
+    .marcas-banner {
+      background: #1e1e1e;
+      padding: 12px 0;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      margin-bottom: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .linea-fija {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #90caf9;
+      padding-bottom: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .linea-animada-container {
+      overflow: hidden;
+      position: relative;
+      height: 30px;
+    }
+
+    .marcas-scroll {
+      display: flex;
+      width: max-content;
+      animation: scroll-left 20s linear infinite;
+    }
+
+    .marcas-grupo {
+      display: flex;
+    }
+
+    .marcas-grupo span {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      padding: 0 20px;
+      display: inline-block;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .section {
+      background: #1e1e1e;
+      padding: 35px;
+      margin-bottom: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+    }
+
+    .section h2 {
+      color: #90caf9;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #42a5f5;
+      display: inline-block;
+    }
+
+    .servicios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .servicio-item {
+      display: flex;
+      align-items: flex-start;
+      background: #2c2c2c;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #42a5f5;
+    }
+
+    .servicio-item .icono {
+      font-size: 1.8rem;
+      margin-right: 15px;
+      color: #42a5f5;
+    }
+
+    .servicio-item h3 {
+      color: #e0e0e0;
+      margin-bottom: 5px;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #1e3c72, #2a5298 100%);
+      color: white;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .cta-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    .whatsapp-btn {
+      background: #25d366;
+      color: white;
+      border: none;
+      padding: 18px 40px;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .whatsapp-btn:hover {
+      background: #128c7e;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #b0bec5;
+      font-size: 0.95rem;
+      margin-top: 40px;
+      background: #1e1e1e;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Mario Molina</h1>
-            <p class="profesion">Diseñador AEC | Constructor Civil | Topógrafo Geomático</p>
-        </header>
+  <div class="container">
+    <header>
+      <h1>Mario Molina</h1>
+      <p class="profesion">Diseñador AEC | Constructor Civil | Topógrafo Geomático</p>
+    </header>
 
-        <!-- Banner de marcas con dos líneas: una fija y una animada con vaivén -->
-        <div class="marcas-banner">
-            <div class="linea-fija">30 años experiencia forjada en:</div>
-            <div class="linea-animada-container">
-                <div class="marcas-scroll-container">
-                    <div class="marcas-scroll">
-                        <span>·</span>
-                        <span>Arcor</span>
-                        <span>·</span>
-                        <span>Philips</span>
-                        <span>·</span>
-                        <span>Whirlpool</span>
-                        <span>·</span>
-                        <span>Peabody</span>
-                        <span>·</span>
-                        <span>Philco</span>
-                        <span>·</span>
-                        <span>MM</span>
-                        <span>·</span>
-                    </div>
-                </div>
-            </div>
+    <div class="marcas-banner">
+      <div class="linea-fija">30 años experiencia forjada en:</div>
+      <div class="linea-animada-container">
+        <div class="marcas-scroll">
+          <div class="marcas-grupo">
+            <span>Arcor</span>
+            <span>Philips</span>
+            <span>Whirlpool</span>
+            <span>Peabody</span>
+            <span>Philco</span>
+            <span>MM</span>
+          </div>
+          <div class="marcas-grupo">
+            <span>Arcor</span>
+            <span>Philips</span>
+            <span>Whirlpool</span>
+            <span>Peabody</span>
+            <span>Philco</span>
+            <span>MM</span>
+          </div>
         </div>
-
-        <section class="section">
-            <h2>Sobre Mí</h2>
-            <p>Soy un profesional con más de tres décadas de experiencia, especializado en diseño, desarrollo y gerenciamiento de proyectos de Arquitectura, Ingeniería y Construcción.</p>
-            <p style="margin-top: 15px;">He trabajado en una amplia gama de proyectos incluyendo viviendas, edificaciones e infraestructuras como naves industriales. Mi objetivo es transformar tus ideas en proyectos concretos, con calidad y compromiso.</p>
-        </section>
-
-        <section class="section">
-            <h2>Servicios</h2>
-            <div class="servicios">
-                <div class="servicio-item">
-                    <div class="icono">🏠</div>
-                    <div>
-                        <h3>Diseño de edificación</h3>
-                        <p>Residencial y comercial</p>
-                    </div>
-                </div>
-                
-                <div class="servicio-item">
-                    <div class="icono">📐</div>
-                    <div>
-                        <h3>Proyectos a medida</h3>
-                        <p>Diseño 3D especializado</p>
-                    </div>
-                </div>
-                
-                <div class="servicio-item">
-                    <div class="icono">📑</div>
-                    <div>
-                        <h3>Regularizaciones</h3>
-                        <p>Planos municipales y trámites</p>
-                    </div>
-                </div>
-                
-                <div class="servicio-item">
-                    <div class="icono">👷</div>
-                    <div>
-                        <h3>Dirección de obras</h3>
-                        <p>Supervisión y gerenciamiento</p>
-                    </div>
-                </div>
-                
-                <div class="servicio-item">
-                    <div class="icono">📏</div>
-                    <div>
-                        <h3>Mensura</h3>
-                        <p>Terrenos y edificaciones</p>
-                    </div>
-                </div>
-                
-                <div class="servicio-item">
-                    <div class="icono">💰</div>
-                    <div>
-                        <h3>Presupuestos</h3>
-                        <p>Sin cargo, sin compromiso</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Llamada a la acción -->
-        <div class="cta-section">
-            <h2>¡Solicita tu presupuesto sin cargo!</h2>
-            <a href="https://wa.me/5491172351214?text=Hola%20Mario,%20necesito%20información%20sobre%20sus%20servicios" 
-               class="whatsapp-btn" target="_blank">
-                <span class="icono">💬</span> WhatsApp
-            </a>
-        </div>
-
-        <section class="section">
-            <h2>Contacto</h2>
-            <div class="contacto-info">
-                <div class="contacto-item">
-                    <span class="icono"><i class="fab fa-whatsapp"></i></span>
-                    <div>
-                        <strong>WhatsApp:</strong> +54 11 7235 1214
-                    </div>
-                </div>
-                
-                <div class="contacto-item">
-                    <span class="icono"><i class="fab fa-instagram"></i></span>
-                    <div>
-                        <strong>Instagram:</strong> @mm.proyectos.ar
-                    </div>
-                </div>
-                
-                <div class="contacto-item">
-                    <span class="icono">📍</span>
-                    <div>
-                        <strong>Ubicación:</strong> 25 de Mayo, (BA) 🇦🇷 🌎
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2023 Mario Molina - Todos los derechos reservados - Buenos Aires, Argentina</p>
-            <p style="margin-top: 10px;">Diseñador AEC | Constructor Civil | Topógrafo Geomático | 30 años de Experiencia</p>
-            
-            <div class="redes-sociales">
-                <a href="https://www.instagram.com/mm.proyectos.ar" target="_blank" class="social-link">
-                    <i class="fab fa-instagram"></i>
-                    mm.proyectos.ar
-                </a>
-                <a href="https://bio.site/mariomolina.ar" target="_blank" class="social-link">
-                    <i class="fas fa-globe"></i>
-                    bio.site/mariomolina.ar
-                </a>
-            </div>
-        </footer>
+      </div>
     </div>
+
+    <section class="section">
+      <h2>Sobre Mí</h2>
+      <p>Soy un profesional con más de tres décadas de experiencia, especializado en diseño, desarrollo y gerenciamiento de proyectos de Arquitectura, Ingeniería y Construcción.</p>
+      <p style="margin-top: 15px;">He trabajado en una amplia gama de proyectos incluyendo viviendas, edificaciones e infraestructuras como naves industriales. Mi objetivo es transformar tus ideas en proyectos concretos, con calidad y compromiso.</p>
+    </section>
+
+    <section class="section">
+      <h2>Servicios</h2>
+      <div class="servicios">
+        <div class="servicio-item">
+          <div class="icono">🏠</div>
+          <div>
+            <h3>Diseño de edificación</h3>
+            <p>Residencial y comercial</p>
+          </div>
+        </div>
+        <div class="servicio-item">
+          <div class="icono">📐</div>
+          <div>
+            <h3>Proyectos a medida</h3>
+            <p>Diseño 3D especializado</p>
+          </div>
+        </div>
+        <div class="servicio-item">
+          <div class="icono">📑</div>
+          <div>
+            <h3>Regularizaciones</h3>
+            <p>Planos municipales y trámites</p>
+          </div>
+        </div>
+        <div class="servicio-item">
+          <div class="icono">👷</div>
+          <div>
+            <h3>Dirección de obras</h3>
+            <p>Supervisión y gerenciamiento</p>
+          </div>
+        </div>
+        <div class="servicio-item">
+          <div class="icono">📏</div>
+          <div>
+            <h3>Mensura</h3>
+            <p>Terrenos y edificaciones</p>
+          </div>
+        </div>
+        <div class="servicio-item">
+          <div class="icono">💰</div>
+          <div>
+            <h3>Presupuestos</h3>
+            <p>Sin cargo, sin compromiso</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-section">
+      <h2>¡Solicita tu presupuesto sin cargo!</h2>
+      <a href="https://wa.me/5491172351214?text=Hola%20Mario,%20necesito%20información%20sobre%20sus%20servicios" class="whatsapp-btn" target="_blank">
+        <span class="icono">💬</span> WhatsApp
+      </a>
+    </div>
+
+    <section class="section">
+      <h2>Contacto</h2>
+      <div class="contacto-info">
+        <div class="contacto-item">
+          <span class="icono">📱</span>
+          <div><strong>WhatsApp:</strong> +54 11 7235 1214</div>
+        </div>
+        <div class="contacto-item">
+          <span class="icono">📷</span>
+          <div><strong>Instagram:</strong> @mm.proyectos.ar</div>
+        </div>
+        <div class="contacto-item">
+          <span class="icono">📍</span>
+          <div><strong>Zona de trabajo:</strong> 25 de Mayo,(BA) y la zona 🇦🇷 🌎</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2023 Mario Molina - Todos los derechos reservados - Buenos Aires, Argentina</p>
+      <p style="margin-top: 10px;">Diseño y Construcción · Proyectos · Planos · 3D · Edificación</p>
+    </footer>
+  </div>
 </body>
 </html>
