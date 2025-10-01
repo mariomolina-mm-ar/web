@@ -18,14 +18,11 @@
       line-height: 1.6;
     }
 
-    /* --- CAMBIO CLAVE: Contenedor más flexible --- */
     .container {
-      width: 90%; /* Usa el 90% del ancho disponible */
-      max-width: 1200px; /* Pero no más de 1200px para no ser demasiado ancho en monitores gigantes */
+      max-width: 900px;
       margin: 0 auto;
       padding: 20px;
     }
-    /* --- FIN DEL CAMBIO --- */
 
     header {
       background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
@@ -121,55 +118,45 @@
       display: inline-block;
     }
 
-    /* --- ESTILOS PARA LA GALERÍA DE PROYECTOS --- */
+    /* --- ESTILOS PARA LA GALERÍA DE PROYECTOS (SIMPLIFICADA) --- */
     .galeria-proyectos {
       display: grid;
       grid-template-columns: 1fr; 
       gap: 25px;
       margin-top: 25px;
-      max-width: 800px; /* Aumentamos el límite para que las imágenes sean más grandes */
+      max-width: 800px;
       margin-left: auto;
       margin-right: auto;
     }
 
     .proyecto-item {
-      position: relative;
-      overflow: hidden;
+      background: #2c2c2c;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      cursor: pointer;
-      background: #2c2c2c;
+      overflow: hidden; /* Asegura que la imagen respete los bordes redondeados */
     }
 
     .proyecto-item img {
       width: 100%;
       height: auto;
       display: block;
-      transition: transform 0.4s ease, filter 0.4s ease;
+      transition: transform 0.4s ease;
     }
 
+    /* Efecto hover sutil solo en la imagen */
     .proyecto-item:hover img {
-      transform: scale(1.05);
-      filter: brightness(0.7);
+      transform: scale(1.03);
     }
 
-    .proyecto-descripcion {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-      color: white;
-      padding: 20px 15px 15px;
+    /* --- NUEVO: Estilo para las etiquetas --- */
+    .proyecto-etiqueta {
       text-align: center;
+      padding: 15px;
+      margin: 0;
       font-size: 1.1rem;
       font-weight: 500;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    .proyecto-item:hover .proyecto-descripcion {
-      opacity: 1;
+      color: #b0bec5;
+      background: #2c2c2c;
     }
     /* --- FIN DE LOS ESTILOS --- */
 
@@ -248,6 +235,19 @@
       border-radius: 15px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     }
+
+    /* --- ESTILOS PARA PANTALLAS GRANDES (1024px en adelante) --- */
+    @media (min-width: 1024px) {
+      .container {
+        width: 95%;
+        max-width: none;
+      }
+      .galeria-proyectos {
+        max-width: none;
+      }
+    }
+    /* --- FIN DE MEDIA QUERY PARA PANTALLAS GRANDES --- */
+
   </style>
 </head>
 <body>
@@ -286,16 +286,12 @@
       <h2>Mis Proyectos</h2>
       <div class="galeria-proyectos">
         <div class="proyecto-item">
-          <img src="https://raw.githubusercontent.com/mariomolina-mm-ar/web/main/images/proyecto_ct_00.webp" alt="Dibujo inicial en Lápiz">
-          <div class="proyecto-descripcion">
-            <p>Concepto y Diseño Inicial</p>
-          </div>
+          <img src="https://raw.githubusercontent.com/mariomolina-mm-ar/web/main/images/proyecto_ct_00.webp" alt="Dibujo en Lápiz">
+          <p class="proyecto-etiqueta">Dibujo en Lápiz</p>
         </div>
         <div class="proyecto-item">
-          <img src="https://raw.githubusercontent.com/mariomolina-mm-ar/web/main/images/proyecto_ct_01.webp" alt="Render 3D final de proyecto">
-          <div class="proyecto-descripcion">
-            <p>Visualización 3D Fotorealista</p>
-          </div>
+          <img src="https://raw.githubusercontent.com/mariomolina-mm-ar/web/main/images/proyecto_ct_01.webp" alt="Render de Día">
+          <p class="proyecto-etiqueta">Render de Día</p>
         </div>
       </div>
     </section>
