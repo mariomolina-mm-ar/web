@@ -118,6 +118,55 @@
       display: inline-block;
     }
 
+    /* --- NUEVOS ESTILOS PARA LA GALERÍA DE PROYECTOS --- */
+    .galeria-proyectos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .proyecto-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      cursor: pointer;
+      background: #2c2c2c;
+    }
+
+    .proyecto-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .proyecto-item:hover img {
+      transform: scale(1.08);
+      filter: brightness(0.7);
+    }
+
+    .proyecto-descripcion {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      color: white;
+      padding: 20px 15px 15px;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .proyecto-item:hover .proyecto-descripcion {
+      opacity: 1;
+    }
+    /* --- FIN DE LOS NUEVOS ESTILOS --- */
+
     .servicios {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -225,6 +274,28 @@
         </div>
       </div>
     </div>
+
+    <!-- NUEVA SECCIÓN: GALERÍA DE PROYECTOS -->
+    <section class="section">
+      <h2>Mis Proyectos</h2>
+      <div class="galeria-proyectos">
+        <div class="proyecto-item">
+          <!-- REEMPLAZA 'ruta/a/tu/boceto.jpg' CON LA RUTA DE TU IMAGEN -->
+          <img src="ruta/a/tu/boceto.jpg" alt="Boceto inicial de proyecto">
+          <div class="proyecto-descripcion">
+            <p>Concepto y Diseño Inicial</p>
+          </div>
+        </div>
+        <div class="proyecto-item">
+          <!-- REEMPLAZA 'ruta/a/tu/render.jpg' CON LA RUTA DE TU IMAGEN -->
+          <img src="ruta/a/tu/render.jpg" alt="Render 3D final de proyecto">
+          <div class="proyecto-descripcion">
+            <p>Visualización 3D Fotorealista</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FIN DE LA NUEVA SECCIÓN -->
 
     <section class="section">
       <h2>Sobre Mí</h2>
