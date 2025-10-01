@@ -18,11 +18,14 @@
       line-height: 1.6;
     }
 
+    /* --- CAMBIO CLAVE: Contenedor más flexible --- */
     .container {
-      max-width: 900px;
+      width: 90%; /* Usa el 90% del ancho disponible */
+      max-width: 1200px; /* Pero no más de 1200px para no ser demasiado ancho en monitores gigantes */
       margin: 0 auto;
       padding: 20px;
     }
+    /* --- FIN DEL CAMBIO --- */
 
     header {
       background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
@@ -118,14 +121,13 @@
       display: inline-block;
     }
 
-    /* --- ESTILOS PARA LA GALERÍA DE PROYECTOS (MODIFICADO) --- */
+    /* --- ESTILOS PARA LA GALERÍA DE PROYECTOS --- */
     .galeria-proyectos {
       display: grid;
-      /* CAMBIO AQUÍ: De varias columnas a una sola */
       grid-template-columns: 1fr; 
       gap: 25px;
       margin-top: 25px;
-      max-width: 700px; /* Limitamos el ancho para que no sean gigantes */
+      max-width: 800px; /* Aumentamos el límite para que las imágenes sean más grandes */
       margin-left: auto;
       margin-right: auto;
     }
@@ -147,7 +149,7 @@
     }
 
     .proyecto-item:hover img {
-      transform: scale(1.05); /* Reducimos el zoom para que no sea tan brusco */
+      transform: scale(1.05);
       filter: brightness(0.7);
     }
 
@@ -365,7 +367,7 @@
       <div class="contacto-info">
         <div class="contacto-item">
           <span class="icono">📱</span>
-          <div><strong>WhatsApp:</strong> +54 911 7235 1214</div>
+          <div><strong>WhatsApp:</strong> +54 11 7235 1214</div>
         </div>
         <div class="contacto-item">
           <span class="icono">📷</span>
