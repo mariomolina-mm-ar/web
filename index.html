@@ -113,6 +113,117 @@
       display: inline-block;
     }
 
+
+
+   /* ========================================================================
+       IMÁGENES APAISADAS Y ZOOM
+       ======================================================================== */
+
+    /* Contenedor de imágenes apaisadas (Trayectoria / Formación) */
+    .full-width-img-container {
+        margin: 30px 0;
+        border: 1px solid var(--border-dim);
+        overflow: hidden;
+        position: relative;
+        background: #000;
+        transition: border-color 0.3s ease;
+    }
+    .full-width-img-container:hover {
+        border-color: var(--accent-cyan);
+    }
+
+    /* 1ra Instancia: Micro-Zoom al pasar el mouse */
+    .zoom-img {
+        width: 100%;
+        height: auto;
+        max-height: 600px;
+        object-fit: cover;
+        display: block;
+        cursor: zoom-in;
+        transition: transform 0.4s ease, filter 0.4s ease;
+    }
+    .zoom-img:hover {
+        transform: scale(1.03);
+        filter: brightness(1.1);
+    }
+
+    /* Etiqueta flotante para indicar que se puede hacer clic */
+    .full-width-img-container::after {
+        content: '[ CLICK_PARA_ZOOM ]';
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-family: var(--cad-font);
+        font-size: 0.65rem;
+        color: var(--accent-cyan);
+        background: rgba(0, 0, 0, 0.8);
+        padding: 4px 8px;
+        border: 1px solid var(--accent-cyan);
+        pointer-events: none;
+        opacity: 0.8;
+    }
+
+    /* ========================================================
+       LIGHTBOX (2da Instancia: Visor de imágenes en pantalla completa)
+       ======================================================== */
+    .lightbox-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 10000; /* Sobrepasa el CRT */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .lightbox-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    .lightbox-overlay img {
+        max-width: 95%;
+        max-height: 95%;
+        object-fit: contain;
+        box-shadow: 0 0 25px rgba(0,0,0,0.8);
+        transform: scale(0.95);
+        transition: transform 0.3s ease;
+    }
+    .lightbox-overlay.active img {
+        transform: scale(1);
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 25px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: 300;
+        font-family: 'Arial', sans-serif;
+        cursor: pointer;
+        transition: color 0.2s, transform 0.2s;
+        z-index: 10001;
+        user-select: none;
+    }
+    .lightbox-close:hover {
+        color: var(--accent-cyan);
+        transform: rotate(90deg);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .portal-title { letter-spacing: 2px; }
+      .zoom-img { max-height: 400px; }
+      .lightbox-close { top: 15px; right: 15px; font-size: 30px; }
+    }
+
+
+
+    
     /* Estilos específicos para la sección Sobre Mí */
     .sobre-mi p {
       font-size: 1.05rem;
@@ -158,6 +269,11 @@
       background: #2c2c2c;
     }
 
+
+
+
+    
+    
     /* Servicios */
     .servicios {
       display: grid;
